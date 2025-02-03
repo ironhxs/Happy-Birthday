@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤倩倩生日快乐❤</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            /*            爱爱心心 */
+            height: 100%;
+            padding: 0;
+        }
+
+        canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #pinkboard {
+            animation: anim 1.5s ease-in-out infinite;
+        }
+
+        @keyframes anim {
+            0% {
+                transform: scale(0.8);
+            }
+
+            25% {
+                transform: scale(0.7);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(0.7);
+            }
+
+            100% {
+                transform: scale(0.8);
+            }
+        }
+
+        .cat {
+            position: absolute;
+            width: 100px; /* 猫咪图片的大小 */
+            height: 100px;
+            background-size: cover;
+            z-index: -1; /* 确保猫咪在其他元素下方 */
+            opacity: 1;
+        }
+
+        @keyframes moveCat {
+            0% {
+                transform: translate(-100px, -50px); /* 起始位置 */
+                opacity: 1;
+            }
+
+            25% {
+                transform: translate(50vw, 10vh); /* 向右飞行，随机垂直位置 */
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(100vw, 20vh); /* 向右飞行，稍微向下偏移 */
+                opacity: 0.6;
+            }
+
+            75% {
+                transform: translate(150vw, -10vh); /* 向右飞行，稍微向上偏移 */
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translate(200vw, 50vh); /* 飞出屏幕 */
+                opacity: 0;
+            }
+        }
+        #name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: -20px;
+            font-size: 46px;
+            color: #ea80b0;
+        }
+
+        body {
+        }
+
+        .aa {
+            position: fixed;
+            left: 50%;
+            bottom: 10px;
+            color: #ccc;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            /*            爱心*/
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay="autoplay">
+        <source src="./m.mp3" type="audio/mp3" />
+    </audio>
+
+
+    <!-- 樱花 -->
+    <div id="jsi-cherry-container" class="container">
+        <!-- 爱心 -->
+        <canvas id="pinkboard" class="container"> </canvas>
+    </div>
+    <!-- 添加小猫的元素 -->
+    <div id="cats-container"></div>
+    <!-- 飞舞字 -->
+    <canvas id="pinkboard" width="1707" height="868"></canvas>
+    <canvas id="canvas" width="1707" height="868"></canvas>
+    <!--猫猫的ssccrriipptttt-->
+    <script>
+
+        // 猫咪图片数组
+        const catImages = ['https://th.bing.com/th/id/OIP.i6W2axiissMTHlP1wNku-wHaJk?w=147&h=190&c=7&r=0&o=5&dpr=2.5&pid=1.7'];
+
+        // 假设文件夹中的图片命名从 11.jpg 到 36.jpg
+        for (let i = 11; i <= 36; i++) {
+            catImages.push(`./${i}.jpg`);  // 假设图片和当前HTML文件在同一目录下
+        }
+        // 猫咪飞行数量
+        const numberOfCats = 5;
+
+        // 获取容器
+        const container = document.getElementById('cats-container');
+
+        // 创建多个猫咪元素
+        for (let i = 0; i < numberOfCats; i++) {
+            const catDiv = document.createElement('div');
+            const randomCatImage = catImages[Math.floor(Math.random() * catImages.length)];
+
+            // 随机化每个猫咪的位置、大小和动画时间
+            catDiv.classList.add('cat');
+            catDiv.style.backgroundImage = `url(${randomCatImage})`;
+
+            // 随机设置猫咪的大小
+            const randomSize = Math.random() * 50 + 50; // 随机大小 50px 到 100px
+            catDiv.style.width = `${randomSize}px`;
+            catDiv.style.height = `${randomSize}px`;
+
+            // 随机设置飞行速度，动画持续时间
+            const randomDuration = Math.random() * 5 + 10; // 随机时间 10s 到 15s
+            catDiv.style.animation = `moveCat ${randomDuration}s linear infinite`;
+
+            // 随机设置飞行起始位置的垂直方向
+            const randomStartPositionY = Math.random() * 100;
+            catDiv.style.bottom = `${randomStartPositionY}vh`;
+
+            // 将猫咪添加到容器
+            container.appendChild(catDiv);
+        }
+    </script>
+
+    <!--飞舞字script-->
+    <script>
+        const colors = [
+            "#eec996", "#8fb7d3", "#b7d4c6", "#c3bedd", "#f1d5e4", "#cae1d3",
+            "#f3c89d", "#d0b0c3", "#819d53", "#c99294", "#cec884", "#ff8e70",
+            "#e0a111", "#fffdf6", "#cbd7ac", "#e8c6c0", "#dc9898", "#ecc8ba"
+        ];
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var ww = window.innerWidth;
+        var wh = window.innerHeight;
+
+        var hearts = [];
+        var stars = []; // 用于存储星星
+
+        // 文字数组
+        const messages = [
+            "Love",
+            "💖倩倩💖",
+            "Forever",
+            "Together",
+            "Happiness",
+            "💖",
+            "You and Me",
+            "Be Happy",
+            "Never Give Up",
+            "Dream Big",
+            "💖",
+            "💖",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "❤",
+            "Believe in Yourself",
+            "Birthday Wishes",
+            "May All Your Dreams Come True",
+            "Cherish Every Moment",
+            "The Best is Yet to Come",
+            "You're My Everything",
+            "Endless Love",
+            "Together Always",
+            "Unconditional Love",
+            "帅宝爱吃QQ糖"
+        ];
+
+        function init() {
+            requestAnimationFrame(render);
+            canvas.width = ww;
+            canvas.height = wh;
+            for (var i = 0; i < 100; i++) {
+                hearts.push(new Heart());
+            }
+            for (var i = 0; i < 400; i++) { // 创建400颗星星
+                stars.push(new Star());
+            }
+        }
+
+        // 随机选择文字
+        function getRandomMessage() {
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        // 星星对象
+        function Star() {
+            this.x = Math.random() * ww;
+            this.y = Math.random() * wh;
+            this.size = Math.random() * 1 + 1; // 星星大小增大，最大4
+            this.speed = Math.random() * 0.3 + 0.2; // 星星的移动速度，增加速度让星星更快速下落
+            this.opacity = Math.random() * 0.5 + 0.3; // 星星的透明度
+        }
+
+        Star.prototype.update = function () {
+            this.y += this.speed; // 星星垂直下落
+            if (this.y > wh) {
+                this.y = 0; // 如果星星越过屏幕底部，重新出现在顶部
+                this.x = Math.random() * ww;
+            }
+        };
+
+        Star.prototype.draw = function () {
+            ctx.globalAlpha = this.opacity;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+            ctx.fillStyle = "white";
+            ctx.fill();
+        };
+
+        function Heart() {
+            this.x = Math.random() * ww;
+            this.y = Math.random() * wh;
+            this.opacity = Math.random() * 0.5 + 0.5;
+            this.vel = {
+                x: (Math.random() - 0.5) * 2,
+                y: (Math.random() - 0.5) * 2
+            };
+            this.targetScale = Math.random() * 0.15 + 0.07;
+            this.scale = this.targetScale * Math.random();
+            this.message = getRandomMessage(); // 为每个心形选择一个随机文字
+        }
+
+        Heart.prototype.update = function (i) {
+            this.x += this.vel.x;
+            this.y += this.vel.y;
+            this.scale += (this.targetScale - this.scale) * 0.005;
+            if (this.x - this.width > ww || this.x + this.width < 0) {
+                this.scale = 0;
+                this.x = Math.random() * ww;
+            }
+            if (this.y - this.height > wh || this.y + this.height < 0) {
+                this.scale = 0;
+                this.y = Math.random() * wh;
+            }
+            this.width = 473.8;
+            this.height = 408.6;
+        };
+
+        Heart.prototype.draw = function (i) {
+            ctx.globalAlpha = this.opacity;
+            ctx.font = `${180 * this.scale}px "微软雅黑"`;
+            ctx.fillStyle = colors[i % 18];
+            ctx.fillText(
+                this.message, // 使用每个心形的独特文字
+                this.x - this.width * 0.5,
+                this.y - this.height * 0.5,
+                this.width,
+                this.height
+            );
+        };
+
+        function render() {
+            ctx.clearRect(0, 0, ww, wh);
+
+            // 绘制星空
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].update();
+                stars[i].draw();
+            }
+
+            // 绘制爱心
+            for (let i = 0; i < hearts.length; i++) {
+                hearts[i].update(i);
+                hearts[i].draw(i);
+            }
+
+            requestAnimationFrame(render);
+        }
+
+        init();
+    </script>
+
+    <!--//爱爱心心ssccrriipptt-->
+    <script>
+        /*
+         * Settings
+         */
+        var settings = {
+            particles: {
+                length: 500, // maximum amount of particles
+                duration: 2, // particle duration in sec
+                velocity: 100, // particle velocity in pixels/sec
+                effect: -0.75, // play with this for a nice effect
+                size: 30, // particle size in pixels
+            },
+        };
+
+        (function () {
+            var b = 0;
+            var c = ["ms", "moz", "webkit", "o"];
+            for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
+                window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
+                window.cancelAnimationFrame =
+                    window[c[a] + "CancelAnimationFrame"] ||
+                    window[c[a] + "CancelRequestAnimationFrame"];
+            }
+            if (!window.requestAnimationFrame) {
+                window.requestAnimationFrame = function (h, e) {
+                    var d = new Date().getTime();
+                    var f = Math.max(0, 16 - (d - b));
+                    var g = window.setTimeout(function () {
+                        h(d + f);
+                    }, f);
+                    b = d + f;
+                    return g;
+                };
+            }
+            if (!window.cancelAnimationFrame) {
+                window.cancelAnimationFrame = function (d) {
+                    clearTimeout(d);
+                };
+            }
+        })();
+
+        /*
+         * Point class
+         */
+        var Point = (function () {
+            function Point(x, y) {
+                this.x = typeof x !== "undefined" ? x : 0;
+                this.y = typeof y !== "undefined" ? y : 0;
+            }
+            Point.prototype.clone = function () {
+                return new Point(this.x, this.y);
+            };
+            Point.prototype.length = function (length) {
+                if (typeof length == "undefined")
+                    return Math.sqrt(this.x * this.x + this.y * this.y);
+                this.normalize();
+                this.x *= length;
+                this.y *= length;
+                return this;
+            };
+            Point.prototype.normalize = function () {
+                var length = this.length();
+                this.x /= length;
+                this.y /= length;
+                return this;
+            };
+            return Point;
+        })();
+
+        /*
+         * Particle class
+         */
+        var Particle = (function () {
+            function Particle() {
+                this.position = new Point();
+                this.velocity = new Point();
+                this.acceleration = new Point();
+                this.age = 0;
+            }
+            Particle.prototype.initialize = function (x, y, dx, dy) {
+                this.position.x = x;
+                this.position.y = y;
+                this.velocity.x = dx;
+                this.velocity.y = dy;
+                this.acceleration.x = dx * settings.particles.effect;
+                this.acceleration.y = dy * settings.particles.effect;
+                this.age = 0;
+            };
+            Particle.prototype.update = function (deltaTime) {
+                this.position.x += this.velocity.x * deltaTime;
+                this.position.y += this.velocity.y * deltaTime;
+                this.velocity.x += this.acceleration.x * deltaTime;
+                this.velocity.y += this.acceleration.y * deltaTime;
+                this.age += deltaTime;
+            };
+            Particle.prototype.draw = function (context, image) {
+                function ease(t) {
+                    return --t * t * t + 1;
+                }
+                var size = image.width * ease(this.age / settings.particles.duration);
+                context.globalAlpha = 1 - this.age / settings.particles.duration;
+                context.drawImage(
+                    image,
+                    this.position.x - size / 2,
+                    this.position.y - size / 2,
+                    size,
+                    size
+                );
+            };
+            return Particle;
+        })();
+
+        /*
+         * ParticlePool class
+         */
+        var ParticlePool = (function () {
+            var particles,
+                firstActive = 0,
+                firstFree = 0,
+                duration = settings.particles.duration;
+
+            function ParticlePool(length) {
+                // create and populate particle pool
+                particles = new Array(length);
+                for (var i = 0; i < particles.length; i++)
+                    particles[i] = new Particle();
+            }
+            ParticlePool.prototype.add = function (x, y, dx, dy) {
+                particles[firstFree].initialize(x, y, dx, dy);
+
+                // handle circular queue
+                firstFree++;
+                if (firstFree == particles.length) firstFree = 0;
+                if (firstActive == firstFree) firstActive++;
+                if (firstActive == particles.length) firstActive = 0;
+            };
+            ParticlePool.prototype.update = function (deltaTime) {
+                var i;
+
+                // update active particles
+                if (firstActive < firstFree) {
+                    for (i = firstActive; i < firstFree; i++)
+                        particles[i].update(deltaTime);
+                }
+                if (firstFree < firstActive) {
+                    for (i = firstActive; i < particles.length; i++)
+                        particles[i].update(deltaTime);
+                    for (i = 0; i < firstFree; i++) particles[i].update(deltaTime);
+                }
+
+                // remove inactive particles
+                while (
+                    particles[firstActive].age >= duration &&
+                    firstActive != firstFree
+                ) {
+                    firstActive++;
+                    if (firstActive == particles.length) firstActive = 0;
+                }
+            };
+            ParticlePool.prototype.draw = function (context, image) {
+                // draw active particles
+                if (firstActive < firstFree) {
+                    for (i = firstActive; i < firstFree; i++)
+                        particles[i].draw(context, image);
+                }
+                if (firstFree < firstActive) {
+                    for (i = firstActive; i < particles.length; i++)
+                        particles[i].draw(context, image);
+                    for (i = 0; i < firstFree; i++) particles[i].draw(context, image);
+                }
+            };
+            return ParticlePool;
+        })();
+
+        /*
+         * Putting it all together
+         */
+        (function (canvas) {
+            var context = canvas.getContext("2d"),
+                particles = new ParticlePool(settings.particles.length),
+                particleRate =
+                    settings.particles.length / settings.particles.duration, // particles/sec
+                time;
+
+            // get point on heart with -PI <= t <= PI
+            function pointOnHeart(t) {
+                return new Point(
+                    160 * Math.pow(Math.sin(t), 3),
+                    130 * Math.cos(t) -
+                    50 * Math.cos(2 * t) -
+                    20 * Math.cos(3 * t) -
+                    10 * Math.cos(4 * t) +
+                    25
+                );
+            }
+
+            // creating the particle image using a dummy canvas
+            var image = (function () {
+                var canvas = document.createElement("canvas"),
+                    context = canvas.getContext("2d");
+                canvas.width = settings.particles.size;
+                canvas.height = settings.particles.size;
+                // helper function to create the path
+                function to(t) {
+                    var point = pointOnHeart(t);
+                    point.x =
+                        settings.particles.size / 2 +
+                        (point.x * settings.particles.size) / 350;
+                    point.y =
+                        settings.particles.size / 2 -
+                        (point.y * settings.particles.size) / 350;
+                    return point;
+                }
+                // create the path
+                context.beginPath();
+                var t = -Math.PI;
+                var point = to(t);
+                context.moveTo(point.x, point.y);
+                while (t < Math.PI) {
+                    t += 0.01; // baby steps!
+                    point = to(t);
+                    context.lineTo(point.x, point.y);
+                }
+                context.closePath();
+                // create the fill
+                context.fillStyle = "#ea80b0";
+                context.fill();
+                // create the image
+                var image = new Image();
+                image.src = canvas.toDataURL();
+                return image;
+            })();
+
+            // render that thing!
+            function render() {
+                // next animation frame
+                requestAnimationFrame(render);
+
+                // update time
+                var newTime = new Date().getTime() / 1000,
+                    deltaTime = newTime - (time || newTime);
+                time = newTime;
+
+                // clear canvas
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                // create new particles
+                var amount = particleRate * deltaTime;
+                for (var i = 0; i < amount; i++) {
+                    var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
+                    var dir = pos.clone().length(settings.particles.velocity);
+                    particles.add(
+                        canvas.width / 2 + pos.x,
+                        canvas.height / 2 - pos.y,
+                        dir.x,
+                        -dir.y
+                    );
+                }
+
+                // update and draw particles
+                particles.update(deltaTime);
+                particles.draw(context, image);
+            }
+
+            // handle (re-)sizing of the canvas
+            function onResize() {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+            }
+            window.onresize = onResize;
+
+            // delay rendering bootstrap
+            setTimeout(function () {
+                onResize();
+                render();
+            }, 10);
+        })(document.getElementById("pinkboard"));
+    </script>
+    <script>
+        var RENDERER = {
+            INIT_CHERRY_BLOSSOM_COUNT: 30,
+            MAX_ADDING_INTERVAL: 10,
+
+            init: function () {
+                this.setParameters();
+                this.reconstructMethods();
+                this.createCherries();
+                this.render();
+                if (
+                    navigator.userAgent.match(
+                        /(phone|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+                    )
+                ) {
+                    // var box = document.querySelectorAll(".box")[0];
+                    // console.log(box, "移动端");
+                    // box.style.marginTop = "65%";
+                }
+            },
+            setParameters: function () {
+                this.$container = $("#jsi-cherry-container");
+                this.width = this.$container.width();
+                this.height = this.$container.height();
+                this.context = $("<canvas />")
+                    .attr({ width: this.width, height: this.height })
+                    .appendTo(this.$container)
+                    .get(0)
+                var rate = this.FOCUS_POSITION / (this.z + this.FOCUS_POSITION),
+                    x = this.renderer.width / 2 + this.x * rate,
+                    y = this.renderer.height / 2 - this.y * rate;
+                return { rate: rate, x: x, y: y };
+            },
+            re
+        }
+                            } else {
+            this.phi += Math.PI / (axis.y == this.thresholdY ? 200 : 500);
+            this.phi %= Math.PI;
+        }
+        if (this.y <= -this.renderer.height * this.SURFACE_RATE) {
+            this.x += 2;
+            this.y = -this.renderer.height * this.SURFACE_RATE;
+        } else {
+            this.x += this.vx;
+            this.y += this.vy;
+        }
+        return (
+            this.z > -this.FOCUS_POSITION &&
+            this.z < this.FAR_LIMIT &&
+            this.x < this.renderer.width * 1.5
+        );
+                          },
+                        };
+        $(function () {
+            RENDERER.init();
+        });
+    </script>
+</body>
+</html>
