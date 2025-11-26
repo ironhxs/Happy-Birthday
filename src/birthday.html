@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤倩倩生日快乐❤</title>
+    <title>❤生日快乐❤</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
@@ -90,9 +90,6 @@
             margin-top: -20px;
             font-size: 46px;
             color: #ea80b0;
-        }
-
-        body {
         }
 
         .aa {
@@ -186,40 +183,26 @@
         var hearts = [];
         var stars = []; // 用于存储星星
 
-        // 文字数组
+        // ============ 文字数组（可自定义修改）============
+        // 在这里添加你想要显示的飘浮文字
+        // 示例："💖TA的名字💖", "生日快乐", "I Love You" 等
         const messages = [
-            "Love",
-            "💖倩倩💖",
-            "Forever",
-            "Together",
-            "Happiness",
-            "💖",
-            "You and Me",
-            "Be Happy",
-            "Never Give Up",
-            "Dream Big",
-            "💖",
+            "Happy Birthday",   // 示例：生日快乐
+            "💖TA的名字💖",      // 示例：替换为TA的名字
+            "Forever",          // 示例：永远
+            "I Love You",       // 示例：我爱你
             "💖",
             "❤",
+            "🎂",
+            "🎉",
+            "💕",
+            "✨",
+            "Best Wishes",      // 示例：最好的祝福
             "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "Believe in Yourself",
-            "Birthday Wishes",
-            "May All Your Dreams Come True",
-            "Cherish Every Moment",
-            "The Best is Yet to Come",
-            "You're My Everything",
-            "Endless Love",
-            "Together Always",
-            "Unconditional Love",
-            "帅宝爱吃QQ糖"
+            "💖",
+            "你的专属文字"        // 示例：自定义文字
         ];
+        // ============================================
 
         function init() {
             requestAnimationFrame(render);
@@ -605,62 +588,16 @@
             }, 10);
         })(document.getElementById("pinkboard"));
     </script>
+    <!-- 樱花效果脚本（原代码不完整，已注释，如需要可找完整版替换） -->
+    <!--
     <script>
         var RENDERER = {
             INIT_CHERRY_BLOSSOM_COUNT: 30,
             MAX_ADDING_INTERVAL: 10,
-
-            init: function () {
-                this.setParameters();
-                this.reconstructMethods();
-                this.createCherries();
-                this.render();
-                if (
-                    navigator.userAgent.match(
-                        /(phone|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-                    )
-                ) {
-                    // var box = document.querySelectorAll(".box")[0];
-                    // console.log(box, "移动端");
-                    // box.style.marginTop = "65%";
-                }
-            },
-            setParameters: function () {
-                this.$container = $("#jsi-cherry-container");
-                this.width = this.$container.width();
-                this.height = this.$container.height();
-                this.context = $("<canvas />")
-                    .attr({ width: this.width, height: this.height })
-                    .appendTo(this.$container)
-                    .get(0)
-                var rate = this.FOCUS_POSITION / (this.z + this.FOCUS_POSITION),
-                    x = this.renderer.width / 2 + this.x * rate,
-                    y = this.renderer.height / 2 - this.y * rate;
-                return { rate: rate, x: x, y: y };
-            },
-            re
-        }
-                            } else {
-            this.phi += Math.PI / (axis.y == this.thresholdY ? 200 : 500);
-            this.phi %= Math.PI;
-        }
-        if (this.y <= -this.renderer.height * this.SURFACE_RATE) {
-            this.x += 2;
-            this.y = -this.renderer.height * this.SURFACE_RATE;
-        } else {
-            this.x += this.vx;
-            this.y += this.vy;
-        }
-        return (
-            this.z > -this.FOCUS_POSITION &&
-            this.z < this.FAR_LIMIT &&
-            this.x < this.renderer.width * 1.5
-        );
-                          },
-                        };
-        $(function () {
-            RENDERER.init();
-        });
+            init: function () { ... }
+        };
+        $(function () { RENDERER.init(); });
     </script>
+    -->
 </body>
 </html>

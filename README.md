@@ -1,141 +1,167 @@
-# Happy-Birthday
-之前女朋友过生日，整合的一个惊喜（究极缝合怪）
-# 介绍
-1. birthday2.html是入口网页
+<div align="center">
 
-   ![第一个页面效果图](1.png)
+# 🎂 Happy Birthday Surprise 🎂
 
-+ 背景流星
+✨ 一个浪漫的生日惊喜网页项目 ✨
 
-+ 3D照片墙
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-+ 流言飞爱语
-2. birthday.html是上一个网页跳转后的
-	 ![第二个页面效果图](2.png)
-+ 中间樱花跳动爱心
-+ 飘舞爱心和文章
-+ 修猫照片飘舞
-+ 背景点点星空
+[功能特点](#-功能特点) • [效果预览](#-效果预览) • [快速开始](#-快速开始) • [自定义配置](#-自定义配置) • [自动化惊喜](#-自动化惊喜)
 
-# 食用指南
-1. birthday2.html
+</div>
 
-``` javascript
-  <h1>生日快乐！</h1>
-    <p>祝你每一天都充满快乐与幸福。</p>
-    <p>希望今天能给你带来一个特别的惊喜！</p>
-    <div class="perspective">
-        <div class="wrap" id="imgwrap">
-            <img src="./1.jpg" alt="demo">
-            <img src="./2.jpg" alt="demo">
-            <img src="./3.jpg" alt="demo">
-            <img src="./4.jpg" alt="demo">
-            <img src="./5.jpg" alt="demo">
-            <img src="./6.jpg" alt="demo">
-            <img src="./7.jpg" alt="demo">
-            <img src="./8.jpg" alt="demo">
-            <img src="./9.jpg" alt="demo">
-            <img src="./10.jpg" alt="demo">
-            <img src="./14.jpg" alt="demo">
-            <img src="./15.jpg" alt="demo">
-            <img src="./37.jpg" alt="demo">
-            <img src="./38.jpg" alt="demo">
-        </div>
+---
 
-        <div id="heartText" class="heart">
-            ❤️ 爱，是跨越时光的诗篇；与你共度，是我一生的温柔与期待 ❤️
-        </div>
-        <div id="text1" class="text">
-            💖 每一段与你的相遇，仿佛是宇宙为我编织的诗行，悄然诉说着永恒的爱意 💖
-        </div>
-        <div id="text2" class="text">
-            💫 生日，是你生命中的一颗璀璨星辰，愿它引领你走向更加辉煌的未来 💫
-        </div>
-        <div id="text3" class="text">
-            🌸 我的心，因你而生动；我的世界，因你而诗意盎然 🌸
-        </div>
-        <div id="text4" class="text">
-            🌹 愿时光不老，我们依然携手共赴每一个晨曦与黄昏，踏过每一段岁月的风景 🌹
-        </div>
-        <div id="text5" class="text">
-            ✨ 你是我生命中最温暖的光，照亮我所有的迷茫与未知，愿你如光芒万丈 ✨
-        </div>
-        <div id="text6" class="text">
-            🌙 你在我心中，是无尽星河里的唯一明月，永远璀璨，永不沉寂 🌙
-        </div>
-        <div id="text7" class="text">
-            💖 每个清晨，我都祈愿你的微笑如花般绽放，愿岁月待你如初 💖
-        </div>
-        <div id="text8" class="text">
-            🌟 生日是你心灵的华章，愿它以你为主旋律，奏响每一个动人的旋律 🌟
-        </div>
-        <div id="text9" class="text">
-            🌷 你是我心中最温暖的诗行，岁月的每一个脚步都因你而充满意义 🌷
-        </div>
+## 📖 项目简介
 
-    </div>
-    
+这是一个精心设计的生日惊喜网页项目，融合了多种浪漫的视觉效果，为你心爱的人送上独特的生日祝福。项目包含两个精美的网页，配合背景音乐和定时启动脚本，打造一个难忘的生日惊喜！
+
+## ✨ 功能特点
+
+| 功能 | 描述 |
+|------|------|
+| �� **流星雨背景** | 绚丽的流星划过夜空 |
+| 📸 **3D 照片墙** | 立体旋转的照片展示 |
+| 💕 **飘动情话** | 浪漫的祝福语渐隐飘动 |
+| 🌸 **跳动爱心** | 樱花粉色跳动的爱心动画 |
+| 🐱 **飘舞照片** | 可爱的照片飘舞效果 |
+| ⭐ **星空背景** | 梦幻的点点星空 |
+| 🎵 **背景音乐** | 自动播放浪漫背景音乐 |
+| ⏰ **定时启动** | 支持 Windows 任务计划定时启动 |
+
+## 🎬 效果预览
+
+### 第一页 - 3D 照片墙与流星雨
+
+> 入口页面，展示 3D 旋转照片墙，配合流星雨背景和浪漫情话
+
+![第一个页面效果图](1.png)
+
+### 第二页 - 跳动爱心与星空
+
+> 跳转后的主页面，展示跳动的樱花爱心，飘舞的照片和祝福文字
+
+![第二个页面效果图](2.png)
+
+## 🚀 快速开始
+
+### 项目结构
+
+```
+Happy-Birthday/
+├── README.md            # 项目说明文档
+├── LICENSE              # MIT 许可证
+├── .gitignore           # Git 忽略文件
+├── 1.png                # 效果截图1
+├── 2.png                # 效果截图2
+└── src/                 # 源代码目录
+    ├── birthday2.html   # 入口页面（3D照片墙）
+    ├── birthday.html    # 主页面（跳动爱心）
+    ├── open_birthday.bat# Windows 启动脚本
+    ├── m.mp3            # 背景音乐
+    ├── 2.jpg ~ 10.jpg   # 照片墙图片
+    └── 11.jpg ~ 38.jpg  # 飘舞照片
 ```
 
-   - 祝福语自定义
-   - 将照片拉进这个文件夹中替换文件
+### 使用方式
 
-2.  birthday.html
-	
-``` javascript
-// 猫咪图片数组
-        const catImages = ['https://th.bing.com/th/id/OIP.i6W2axiissMTHlP1wNku-wHaJk?w=147&h=190&c=7&r=0&o=5&dpr=2.5&pid=1.7'];
+1. **直接打开**：双击 `birthday2.html` 在浏览器中打开
+2. **一键启动**：双击 `open_birthday.bat` 同时播放音乐并打开网页
+3. **定时惊喜**：配合 Windows 任务计划程序实现定时启动
 
-        // 假设文件夹中的图片命名从 11.jpg 到 36.jpg
-        for (let i = 11; i <= 36; i++) {
-            catImages.push(`./${i}.jpg`);  // 假设图片和当前HTML文件在同一目录下
-            
+## 🎨 自定义配置
+
+### 1. 修改照片墙图片
+
+在 `birthday2.html` 中找到以下代码，替换图片路径：
+
+```html
+<div class="wrap" id="imgwrap">
+    <img src="./1.jpg" alt="demo">
+    <img src="./2.jpg" alt="demo">
+    <!-- 添加更多图片... -->
+</div>
 ```
-- 猫猫图片可以去网上自己找个链接替换
-- 将文件夹中11-36照片替换，也可以添加37、38~~~
 
-``` javascript
+### 2. 修改浪漫祝福语
 
-// 文字数组
-        const messages = [
-            "Love",
-            "💖倩倩💖",
-            "Forever",
-            "Together",
-            "Happiness",
-            "💖",
-            "You and Me",
-            "Be Happy",
-            "Never Give Up",
-            "Dream Big",
-            "💖",
-            "💖",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "❤",
-            "Believe in Yourself",
-            "Birthday Wishes",
-            "May All Your Dreams Come True",
-            "Cherish Every Moment",
-            "The Best is Yet to Come",
-            "You're My Everything",
-            "Endless Love",
-            "Together Always",
-            "Unconditional Love",
-            "帅宝爱吃QQ糖"
-        ];
-            
+在 `birthday2.html` 中找到以下代码，自定义祝福内容：
+
+```html
+<div id="heartText" class="heart">
+    ❤️ 你的祝福语 ❤️
+</div>
+<div id="text1" class="text">
+    💖 更多祝福语 💖
+</div>
 ```
-- 漂浮的爱心和文字可以改变。
-3. open_birthday .bat
-- 这个是用来制造惊喜的，可以结合电脑的任务计划，让他准时在00:00点播放
-	- 操作选择启动程序，然后选择这个脚本。
-	![设置任务计划](time.png)
-	tips：
-- 最好联系她的舍友，帮忙开远程桌面进行操作。（加油哦~🫡）
+
+### 3. 修改飘舞照片
+
+在 `birthday.html` 中找到以下代码，修改照片范围：
+
+```javascript
+// 照片数组
+const catImages = ['你的图片链接'];
+
+// 本地照片 (11.jpg ~ 36.jpg)
+for (let i = 11; i <= 36; i++) {
+    catImages.push(`./${i}.jpg`);
+}
+```
+
+### 4. 修改漂浮文字
+
+在 `birthday.html` 中找到 `messages` 数组，自定义漂浮文字：
+
+```javascript
+const messages = [
+    "Love",
+    "💖你的名字💖",
+    "Forever",
+    "Happy Birthday",
+    // 添加更多...
+];
+```
+
+## ⏰ 自动化惊喜
+
+### Windows 任务计划设置
+
+1. 打开 **任务计划程序**（搜索 "任务计划"）
+2. 点击 **创建基本任务**
+3. 设置触发器为指定时间（如 00:00）
+4. 操作选择 **启动程序**
+5. 选择 `open_birthday.bat` 脚本
+
+![设置任务计划](time.png)
+
+### 💡 小贴士
+
+- 🔌 确保电脑不会在指定时间前休眠
+- 🔊 提前调整好电脑音量
+- 👥 可以联系 TA 的室友帮忙开启远程桌面协助操作
+- 🎵 可以替换 `m.mp3` 为喜欢的背景音乐
+
+## 🛠️ 技术栈
+
+- **HTML5** - 页面结构
+- **CSS3** - 动画效果 (3D Transform, Keyframes)
+- **JavaScript** - 交互逻辑 (jQuery)
+- **Canvas** - 星空与爱心绘制
+
+## 📝 许可证
+
+本项目仅供学习和个人使用，请勿用于商业用途。
+
+---
+
+<div align="center">
+
+**Made with ❤️ for someone special**
+
+⭐ 如果这个项目帮到了你，欢迎 Star ⭐
+
+</div>
